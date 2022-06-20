@@ -7,7 +7,7 @@ const SensorSchema = new sensorSchema({
     locationY : Number,
     measuringRange : Number,
     originId : {
-        type : Mongoose.Types.ObjectId,
+        type : mongoose.Types.ObjectId,
         ref : "origin"
     },
     records : {
@@ -15,4 +15,4 @@ const SensorSchema = new sensorSchema({
     }
 })
 
-module.exports('sensors', SensorSchema);
+module.exports = mongoose.model('sensors', SensorSchema);
