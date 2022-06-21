@@ -5,6 +5,7 @@ class OriginService extends repositoryService {
     constructor() {
         super(baseModel);
     }
+    
 
 }
 
