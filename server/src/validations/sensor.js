@@ -1,20 +1,21 @@
 const Joi = require('joi');
 
 const createValidation = Joi.object({
-    title : Joi.string().min(3).required(),
-    description : Joi.string().min(3),
+    type : Joi.string().required(),
     locationX : Joi.number().required(),
     locationY : Joi.number().required(),
-    radius : Joi.number().required().min(0),
-});
-
+    reportInterval : Joi.number().required().min(0),
+    mainPoint_id : Joi.string().required().min(8),
+    records : Joi.array()
+})
 const updateValidation = Joi.object({
-    title : Joi.string().min(3),
-    description : Joi.string().min(3),
+    type : Joi.string(),
     locationX : Joi.number(),
     locationY : Joi.number(),
-    radius : Joi.number().min(0),
-});
+    reportInterval : Joi.number().min(0),
+    mainPoint_id : Joi.string().min(8),
+    records : Joi.array()
+})
 
 module.exports = {
     createValidation,

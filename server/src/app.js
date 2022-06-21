@@ -29,7 +29,7 @@ app.use(helmet());
 
 
 
-const port = 3000;
+const port = 8080;
 const server = app.listen(port, () => {
   console.log(`Sunucu ${port} portunda başlatıldı..`);
     app.use("/mainpoints", MainPointRoutes);
