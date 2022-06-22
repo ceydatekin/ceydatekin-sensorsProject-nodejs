@@ -44,7 +44,6 @@ const server = app.listen(port, () => {
 });
 
 
-
 // const io = socket(server, {
 //   cors : {
 //       origin : "*",
@@ -53,15 +52,9 @@ const server = app.listen(port, () => {
 // });
 
 // io.on('connection', (socket) => {
-//   console.log("New user ID : ", socket.id);
 
-
-//   //for socket test
-//   socket.on("msg", (arg) => {
-//       console.log(arg); // world
-//   });
-  
 //   SensorModel.watch().on('change', (change) => {
+//     console.log("sadfg;");
 //       const dataString = JSON.stringify(change);
 //       const dataObject = JSON.parse(dataString);
 
@@ -69,9 +62,9 @@ const server = app.listen(port, () => {
 //           socket.emit("added-sensor", dataObject.fullDocument);
 //       }
 //       if (dataObject.updateDescription) {
-//           // console.log("databu :", dataObject.updateDescription.updatedFields.records);
-//           // socket.emit("changed-sensor", dataObject.updateDescription.updatedFields.logs);
 //           socket.emit("added-record", dataObject);
 //       }
 //   });
+  
+
 // });

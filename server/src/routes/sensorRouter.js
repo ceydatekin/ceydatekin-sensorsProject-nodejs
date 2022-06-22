@@ -10,7 +10,7 @@ const idChecker = require("../middlewares/idChecker");
 const router = express.Router();
 
 // index için token gerekiyor artık ! 
-router.route("/all/:mainPointId").get(idChecker("mainPointId"), SensorController.index);
+router.route("/all/:originId").get(idChecker("originId"), SensorController.index);
 router.route("/").post(validate(schemas.createValidation), SensorController.create);
 router.route("/").get(SensorController.index);
 router.route("/:sensorId").get(idChecker("sensorId"), SensorController.getSensor);

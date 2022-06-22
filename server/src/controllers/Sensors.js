@@ -5,8 +5,8 @@ const SensorService = require("../services/SensorService");
 class Sensor {
 
     index (req, res) {
-        if(!req?.params?.mainPointId) return res.status(httpStatus.BAD_REQUEST).send({ error : "Main point bilgisi eksik !" })
-        SensorService.list({ mainPoint_id : req.params.mainPointId }).then(response => {
+        if(!req?.params?.originId) return res.status(httpStatus.BAD_REQUEST).send({ error : "Main point bilgisi eksik !" })
+        SensorService.list({ origin_id : req.params.originId }).then(response => {
             if(response.length == 0) {
                 res.status(httpStatus.NOT_FOUND).send({message : "Belirtilen Main Point'e ait sensor bulunamamıştır !"});
             } else {

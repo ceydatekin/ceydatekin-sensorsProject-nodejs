@@ -20,9 +20,9 @@ class Origin{
     }
 
     index (req, res) {
-        originServices.list().then(response => {
+        originServices.list().then( response => {
             if(response.length == 0) {
-                res.status(httpStatus.NOT_FOUND).send({message : "Hiçbir Ana Nokta kaydı bulunamadı !"});
+                res.status(httpStatus.NOT_FOUND).send({message : "Ana Nokta Yok"});
             } else {
                 res.status(httpStatus.OK).send(response);
             }

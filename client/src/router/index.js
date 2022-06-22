@@ -15,6 +15,11 @@ const router = createRouter({
       component: HomePage
     },
     {
+      path: '/',
+      name: 'HomePage',
+      component: HomePage
+    },
+    {
       path : "/mainpoints/allorigin",
       name : "allorigin", 
       component: OriginList

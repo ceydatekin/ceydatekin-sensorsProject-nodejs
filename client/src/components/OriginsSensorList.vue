@@ -1,6 +1,6 @@
 
 <template>
-    <div class=" bg-gradient-to-r from-emerald-50 to-emerald-50 " data-theme="pastel">
+    <div class=" bg-gradient-to-r from-emerald-50 to-emerald-50 " data-theme="wireframe">
         <!-- HERO SECTION -->
  
                 <div class="carousel carousel-center h-100 max-w space-x-6  rounded-box bg-gradient-to-r from-orange-300 to-orange-50">
@@ -106,18 +106,18 @@
           <br>
           <br>
         <!-- LIST MAIN POINTS -->
-        <div class="w-2/3 mx-auto mt-20 mb-10" v-if="sensorsInfo.data">
+        <div class="w-5/6 mx-auto  mt-10 mb-10" data-theme="wireframe" v-if="sensorsInfo.data">
             <div class="overflow-x-auto w-full">
                 <table class="table w-full">
                     <!-- head -->
                     <thead>
                         <tr>
-                            <th>Type / Main Point</th>
-                            <th>Location / Status</th>
-                            <th>Created Date</th>
-                            <th>Report Interval (Sec)</th>
-                            <th></th>
-                            <th></th>
+                            <th>Tipi / Merkez Noktası</th>
+                            <th>Lokasyonu / Drumu</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Ölçüm Sıklığı</th>
+                            <th>Sensör Ölçümleri</th>
+                            <th>Düzenle</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -125,15 +125,10 @@
                         <tr v-for="sensor in sensorsInfo.data" :key="sensor._id">
                             <td>
                                 <div class="flex items-center space-x-3">
-                                    <div class="avatar">
-                                        <div class="mask mask-squircle w-12 h-12">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/3720/3720609.png"
-                                                alt="Avatar Tailwind CSS Component" />
-                                        </div>
-                                    </div>
+
                                     <div>
                                         <div class="font-bold">{{ sensor.type }}</div>
-                                        <div class="text-sm opacity-50">{{ sensor.mainPoint_id.title }}</div>
+                                        <div class="text-sm opacity-50">{{ sensor.origin_id.title }}</div>
                                     </div>
                                 </div>
                             </td>
@@ -149,33 +144,24 @@
                             </th>
                             <th>
                                 <router-link :to="`/sensor/${sensor._id}`">
-                                    <button class="btn btn-ghost btn-xs">Details</button>
+                                    <button class="btn bg-gradient-to-r from-emerald-600 to-emerald-600 btn-xs">Detayları</button>
                                 </router-link>
 
                             </th>
 
                             <th>
-                                <button class="btn btn-error btn-xs text-white hover:bg-white hover:text-error"
-                                    @click="deleteSensor(sensor._id)">Delete</button>
+                                <button class="btn  bg-gradient-to-r from-orange-500 to-orange-500  btn-xs text-white hover:bg-white hover:text-error"
+                                    @click="deleteSensor(sensor._id)">Sensörü Sil</button>
                             </th>
                         </tr>
                     </tbody>
                     <!-- foot -->
-                    <tfoot>
-                        <tr>
-                            <th>Type / Main Point</th>
-                            <th>Location / Status</th>
-                            <th>Created Date</th>
-                            <th>Report Interval (Sec)</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
+ 
                 </table>
             </div>
         </div>
 
-
+<br>
         <router-view></router-view>
 
     </div>
@@ -197,7 +183,7 @@ export default {
             }
         }
     },
-    mounted() {
+    created() {
         
         this.getMainPointInformation();
         this.getSensorFromMainPoint();
@@ -211,12 +197,11 @@ export default {
                 method: "GET"
             }).then(response => {
                  
-                // console.log(response.data);
                 this.mainPointInfo = { ...response }
             })
         },
         async getSensorFromMainPoint() {
-           
+           console.log("burası")
             var path = window.location.pathname.split("/");
             await this.$appAxios({
                 url: "/sensors/all/" + path[2],
@@ -226,9 +211,9 @@ export default {
                 console.log(response);
                 this.sensorsInfo = { ...response }
             }).catch(error => {
-                // do nothing
+
             })
-            //   console.log(this.sensorsInfo);
+
         },
         async deleteSensor(id) {
             await this.$appAxios({
@@ -271,10 +256,9 @@ export default {
                     locationX: this.addSensorForm.locationX,
                     locationY: this.addSensorForm.locationY,
                     reportInterval: this.addSensorForm.reportInterval * 1000,
-                    mainPoint_id: path[2]
+                    origin_id: path[2]
                 }
             }).then(sensors => {
-                // console.log(sensors);
                 this.getSensorFromMainPoint();
                 
             });
