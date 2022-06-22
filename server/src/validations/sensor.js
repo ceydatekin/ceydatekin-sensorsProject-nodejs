@@ -5,7 +5,7 @@ const createValidation = Joi.object({
     locationX : Joi.number().required(),
     locationY : Joi.number().required(),
     reportInterval : Joi.number().required().min(0),
-    mainPoint_id : Joi.string().required().min(8),
+    origin_id : Joi.string().required().min(8),
     records : Joi.array()
 })
 const updateValidation = Joi.object({
@@ -13,7 +13,7 @@ const updateValidation = Joi.object({
     locationX : Joi.number(),
     locationY : Joi.number(),
     reportInterval : Joi.number().min(0),
-    mainPoint_id : Joi.string().min(8),
+    origin_id : Joi.string().min(8),
     records : Joi.array()
 })
 

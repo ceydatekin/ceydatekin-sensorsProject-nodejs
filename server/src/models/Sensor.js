@@ -5,14 +5,14 @@ const SensorSchema = new sensorSchema({
     type : String,
     locationX: Number,
     locationY : Number,
-    measuringRange : Number,
-    originId : {
+    reportInterval  : Number,
+    origin_id : {
         type : mongoose.Types.ObjectId,
-        ref : "mainPoint"
+        ref : "origin"
     },
     records : {
         type: Array
     }
-})
+},{timestamps: true, versionKey: false});
 
 module.exports = mongoose.model('sensors', SensorSchema);

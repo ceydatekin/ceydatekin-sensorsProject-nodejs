@@ -9,6 +9,6 @@ const OriginSchema = new originSchema({
     locationX: Number, 
     locationY : Number,
     radius : Number
-})
+},{timestamps: true, versionKey: false})
 
 module.exports = mongoose.model('origin', OriginSchema);
