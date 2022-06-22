@@ -8,7 +8,7 @@ const SensorSchema = new sensorSchema({
     measuringRange : Number,
     originId : {
         type : mongoose.Types.ObjectId,
-        ref : "origin"
+        ref : "mainPoint"
     },
     records : {
         type: Array

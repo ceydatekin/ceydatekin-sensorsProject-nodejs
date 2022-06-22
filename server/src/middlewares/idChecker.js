@@ -7,7 +7,6 @@ const idChecker = (field) => (req, res, next) => {
 
     if(!ObjectId.isValid(req?.params[field || "id"])){
 
-        
         return;
     }
     next();
